@@ -1,0 +1,30 @@
+{
+  "name": "y",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/app.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "jeongho <pjhpjh0805@naver.com>",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "mysql2": "^3.9.1",
+    "reflect-metadata": "^0.2.1",
+    "sequelize": "^6.36.0",
+    "sequelize-typescript": "^2.1.6",
+    "typescript": "^5.3.3"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.11.16",
+    "@types/validator": "^13.11.8",
+    "nodemon": "^3.0.3",
+    "ts-node": "^10.9.2"
+  }
+}
