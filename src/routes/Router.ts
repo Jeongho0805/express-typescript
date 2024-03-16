@@ -1,9 +1,11 @@
 import { Request, Response, Router } from "express";
-import boardController from "../board/BoardController";
+import BoardController from "../board/BoardController";
+import CommentController from "../comment/CommentController";
 
 
 const router = Router();
 
-router.use('/boards', boardController);
+router.use('/boards', BoardController);
+router.use('/comments', CommentController)
 
 export default router;

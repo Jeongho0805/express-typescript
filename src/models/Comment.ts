@@ -4,6 +4,7 @@ import {Board} from "./Board";
 interface CommentAttributes {
     id: number;
     content: string;
+    boardId: number;
 }
 
 @Table
