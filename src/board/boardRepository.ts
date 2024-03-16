@@ -1,15 +1,18 @@
-import {Board} from "../models/board";
+import {Board} from "../models/Board";
 
-export async function findAll(): Promise<Board[]> {
-    return await Board.findAll();
+class BoardRepository {
+    findAll(): Promise<Board[]> {
+        return Board.findAll();
+    }
+
+    findById(boardId: number): Promise<Board> {
+        return Board.findByPk(boardId);
+    }
+
+    create(title: string, content: string): Promise<Board> {
+        return Board.create({title: title, content: content});
+    }
 }
 
-
-export async function findById(boardId: number) {
-    return await Board.findByPk(boardId);
-}
-
-export const createBoard = async(title: string, content: string): Promise<Board> => {
-    return await Board.create({title: title, content: content});
-}
+export default new BoardRepository();
 

@@ -1,5 +1,6 @@
 import { Sequelize} from "sequelize-typescript";
-import {Board} from "../models/board";
+import {Board} from "../models/Board";
+import {Comment} from "../models/Comment";
 
 const sequelize = new Sequelize({
     database: 'board',
@@ -8,7 +9,11 @@ const sequelize = new Sequelize({
     host: 'localhost',
 });
 
-sequelize.addModels([Board]);
+sequelize.addModels([Board, Comment]);
+
+Board.hasMany(Comment);
+Comment.belongsTo(Board);
+
 
 export default sequelize;
 
