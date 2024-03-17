@@ -7,6 +7,14 @@ const sequelize = new Sequelize({
     dialect: 'mysql',
     username: 'root',
     host: 'localhost',
+    logging: (msg) => {
+        let formattedMsg = msg.replace(/(SELECT|FROM|WHERE|LEFT OUTER JOIN|AND)/gi, match => `\n${match}`);
+        formattedMsg = formattedMsg.replace(/, /g, ',\n  ');
+        console.log('\n');
+        console.log('========================= SQL QUERY =========================\n', formattedMsg);
+        console.log('===============================================================\n')
+        console.log('\n')
+    }
 });
 
 sequelize.addModels([Board, Comment]);

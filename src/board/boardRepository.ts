@@ -1,8 +1,14 @@
 import {Board} from "../models/Board";
+import {Comment} from "../models/Comment";
 
 class BoardRepository {
-    findAll(): Promise<Board[]> {
-        return Board.findAll();
+    findAll() {
+        return Board.findAll({
+            include: [{
+                model: Comment,
+                as: 'comments'
+            }]
+        });
     }
 
     findById(boardId: number): Promise<Board> {
