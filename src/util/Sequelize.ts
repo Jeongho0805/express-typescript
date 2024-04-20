@@ -8,7 +8,7 @@ const sequelize = new Sequelize({
     username: 'root',
     host: 'localhost',
     logging: (msg) => {
-        let formattedMsg = msg.replace(/(SELECT|FROM|WHERE|LEFT OUTER JOIN|AND)/gi, match => `\n${match}`);
+        let formattedMsg = msg.replace(/(SELECT|INSERT|UPDATE|DELETE|FROM|WHERE|LEFT OUTER JOIN|AND)/gi, match => `\n${match}`);
         formattedMsg = formattedMsg.replace(/, /g, ',\n  ');
         console.log('\n');
         console.log('========================= SQL QUERY =========================\n', formattedMsg);
@@ -19,8 +19,8 @@ const sequelize = new Sequelize({
 
 sequelize.addModels([Board, Comment]);
 
-Board.hasMany(Comment);
-Comment.belongsTo(Board);
+Board.hasMany(Comment, { foreignKey: 'boardId' });
+Comment.belongsTo(Board, { foreignKey: 'boardId' });
 
 
 export default sequelize;

@@ -19,10 +19,9 @@ export class Comment extends Model<CommentAttributes> {
     @Column(DataType.STRING)
     content: string;
 
-    @ForeignKey(() => Board)
     @Column({
         type: DataType.BIGINT,
-        field: 'BoardId' // 외래키 컬럼 이름을 명확히 지정
+        field: "boardId"
     })
     boardId: number; // 속성 이름은 boardId로 변경
 }

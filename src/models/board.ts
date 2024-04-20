@@ -23,6 +23,9 @@ export class Board extends Model<BoardAttributes> {
     @Column(DataType.STRING)
     content: string;
 
-    @HasMany(() => Comment)
+    @HasMany(() => Comment, {
+        onDelete: 'CASCADE',
+        foreignKey: 'boardId',
+    })
     comments: Comment[];
 }

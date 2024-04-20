@@ -21,9 +21,21 @@ const createBoard = async (req: Request, res: Response) : Promise<Response> => {
     return res.status(201).json({message: message, data: board});
 }
 
+const deleteBoard = async (req: Request, res: Response): Promise<Response> => {
+    const boardId = Number(req.params.boardId);
+    const count = await BoardRepository.delete(boardId);
+    if (count != 1) {
+        return res.status(404).json({message: "존재하지 않는 게시글입니다."});
+    }
+    return res.status(200).json({message: "게시글 삭제를 완료하였습니다."});
+
+
+}
+
 const router = Router();
 router.get("/", getAllBoards);
 router.get("/:boardId", getBoard);
 router.post("/", createBoard);
+router.delete("/:boardId", deleteBoard)
 
 export default router;

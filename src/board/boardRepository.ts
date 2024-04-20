@@ -18,6 +18,10 @@ class BoardRepository {
     create(title: string, content: string): Promise<Board> {
         return Board.create({title: title, content: content});
     }
+
+    async delete(boardId: number): Promise<Number> {
+        return Board.destroy({where: {id: boardId}})
+    }
 }
 
 export default new BoardRepository();
